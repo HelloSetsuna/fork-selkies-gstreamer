@@ -9,6 +9,7 @@ secretGenerator:
   - TURN_SHARED_SECRET
   - TURN_REALM
   - TURN_EXTERNAL_IP
+  - TURN_PSQL_USERDB
 
 resources:
   - namespace.yaml

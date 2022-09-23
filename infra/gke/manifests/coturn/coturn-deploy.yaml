@@ -50,6 +50,11 @@ spec:
                 secretKeyRef:
                   name: turn-shared-secret
                   key: TURN_REALM
+            - name: TURN_PSQL_USERDB
+              valueFrom:
+                secretKeyRef:
+                  name: turn-shared-secret
+                  key: TURN_PSQL_USERDB
             # Firewall rules on the node pool instances must be created manually on these port ranges.
             - name: TURN_PORT
               value: "80"
