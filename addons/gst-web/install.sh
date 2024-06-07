@@ -13,7 +13,7 @@ echo "INFO: Installing to ${INSTALL_DIR}"
 # Install sources
 ###
 mkdir -p "${INSTALL_DIR}/lib"
-cp src/lib/*.js "${INSTALL_DIR}/lib/"
+cp src/lib/*.js* "${INSTALL_DIR}/lib/"
 
 mkdir -p "${INSTALL_DIR}/css"
 cp -R src/css/* "${INSTALL_DIR}/css/"
