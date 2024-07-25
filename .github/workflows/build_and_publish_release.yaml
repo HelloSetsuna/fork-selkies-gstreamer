@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Release Tag"
+        description: "Release Tag Name"
         required: true
         type: string
 
