@@ -7,7 +7,7 @@ substitutions:
   _ACTION: apply
   _NAME: selkies
   _REGION: us-west1
-  _GHCR_IMAGE: ghcr.io/selkies-project/selkies-gstreamer/coturn-web
+  _GHCR_IMAGE: ghcr.io/hellosetsuna/fork-selkies-gstreamer/coturn-web
   _GCR_IMAGE_NAME: selkies-gstreamer-coturn-web
   _IMAGE_TAG: latest
 tags:
@@ -48,7 +48,7 @@ steps:
   ###
   # Apply terraform to create cluster
   ###
-  - name: ghcr.io/selkies-project/selkies-gstreamer/infra-gcp-installer:latest
+  - name: ghcr.io/hellosetsuna/fork-selkies-gstreamer/infra-gcp-installer:latest
     id: "terraform-apply"
     env:
       - TF_VAR_project_id=${PROJECT_ID}

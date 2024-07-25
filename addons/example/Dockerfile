@@ -4,11 +4,11 @@
 
 # Supported base images: Ubuntu 24.04, 22.04, 20.04
 ARG DISTRIB_RELEASE=24.04
-ARG GSTREAMER_BASE_IMAGE=ghcr.io/selkies-project/selkies-gstreamer/gstreamer
+ARG GSTREAMER_BASE_IMAGE=ghcr.io/hellosetsuna/fork-selkies-gstreamer/gstreamer
 ARG GSTREAMER_BASE_IMAGE_RELEASE=main
-ARG PY_BUILD_IMAGE=ghcr.io/selkies-project/selkies-gstreamer/py-build:main
-ARG WEB_IMAGE=ghcr.io/selkies-project/selkies-gstreamer/gst-web:main
-ARG JS_BASE_IMAGE=ghcr.io/selkies-project/selkies-gstreamer/js-interposer
+ARG PY_BUILD_IMAGE=ghcr.io/hellosetsuna/fork-selkies-gstreamer/py-build:main
+ARG WEB_IMAGE=ghcr.io/hellosetsuna/fork-selkies-gstreamer/gst-web:main
+ARG JS_BASE_IMAGE=ghcr.io/hellosetsuna/fork-selkies-gstreamer/js-interposer
 ARG JS_BASE_IMAGE_RELEASE=main
 FROM ${GSTREAMER_BASE_IMAGE}:${GSTREAMER_BASE_IMAGE_RELEASE}-ubuntu${DISTRIB_RELEASE} AS selkies-gstreamer
 FROM ${PY_BUILD_IMAGE} AS selkies-build

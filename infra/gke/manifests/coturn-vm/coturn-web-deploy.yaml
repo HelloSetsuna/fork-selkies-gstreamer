@@ -26,7 +26,7 @@ spec:
         # HTTP api for serving json RTC configs.
         ###
         - name: coturn-web
-          image: ghcr.io/selkies-project/selkies-gstreamer/coturn-web:latest
+          image: ghcr.io/hellosetsuna/fork-selkies-gstreamer/coturn-web:latest
           imagePullPolicy: Always
           env:
             - name: TURN_SHARED_SECRET

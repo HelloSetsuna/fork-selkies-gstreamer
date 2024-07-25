@@ -41,7 +41,7 @@ For the most recent unreleased commit, download from the [GitHub Actions Workflo
 Alternatively, copy the pre-built `x86_64` portable distribution build from the container image (use your own directory other than `/opt`, change `main` with `latest` for the latest stable release):
 
 ```bash
-docker create --platform="linux/amd64" --name conda ghcr.io/selkies-project/selkies-gstreamer/conda:main
+docker create --platform="linux/amd64" --name conda ghcr.io/hellosetsuna/fork-selkies-gstreamer/conda:main
 docker cp conda:/opt/selkies-gstreamer-conda.tar.gz /tmp/selkies-gstreamer-conda.tar.gz
 docker rm conda
 cd ~ && tar -xzf /tmp/selkies-gstreamer-conda.tar.gz && rm -f /tmp/selkies-gstreamer-conda.tar.gz
@@ -68,7 +68,7 @@ For the most recent unreleased commit, download from the [GitHub Actions Workflo
 Alternatively, copy the Python Wheel file from the build container image (DO NOT change the platform in non-`x86_64` architectures, install [binfmt](https://github.com/tonistiigi/binfmt) instead, and change `main` with `latest` for the latest stable release):
 
 ```bash
-docker create --platform="linux/amd64" --name selkies-py ghcr.io/selkies-project/selkies-gstreamer/py-build:main
+docker create --platform="linux/amd64" --name selkies-py ghcr.io/hellosetsuna/fork-selkies-gstreamer/py-build:main
 docker cp selkies-py:/opt/pypi/dist/selkies_gstreamer-0.0.0.dev0-py3-none-any.whl /tmp/selkies_gstreamer-0.0.0.dev0-py3-none-any.whl
 docker rm selkies-py
 sudo PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install --no-cache-dir --force-reinstall /tmp/selkies_gstreamer-0.0.0.dev0-py3-none-any.whl
@@ -108,7 +108,7 @@ For the most recent unreleased commit, download from the [GitHub Actions Workflo
 Alternatively, install the web interface components to the container image (DO NOT change the platform in non-`x86_64` architectures, install [binfmt](https://github.com/tonistiigi/binfmt) instead, and change `main` with `latest` for the latest stable release):
 
 ```bash
-docker create --platform="linux/amd64" --name gst-web ghcr.io/selkies-project/selkies-gstreamer/gst-web:main
+docker create --platform="linux/amd64" --name gst-web ghcr.io/hellosetsuna/fork-selkies-gstreamer/gst-web:main
 sudo docker cp gst-web:/usr/share/nginx/html /opt/gst-web
 docker rm gst-web
 ```
@@ -138,7 +138,7 @@ For the most recent unreleased commit, download from the [GitHub Actions Workflo
 Alternatively, copy the pre-built `x86_64` GStreamer build from the container image and move it to `/opt/gstreamer` or your directory of choice (change `main` with `latest` for the latest stable release):
 
 ```bash
-docker create --platform="linux/amd64" --name gstreamer ghcr.io/selkies-project/selkies-gstreamer/gstreamer:main-ubuntu${DISTRIB_RELEASE}
+docker create --platform="linux/amd64" --name gstreamer ghcr.io/hellosetsuna/fork-selkies-gstreamer/gstreamer:main-ubuntu${DISTRIB_RELEASE}
 sudo docker cp gstreamer:/opt/gstreamer /opt/gstreamer
 docker rm gstreamer
 # Initialize the pre-built GStreamer environment for Selkies-GStreamer to use
@@ -164,7 +164,7 @@ For the most recent unreleased commit, download from the [GitHub Actions Workflo
 Alternatively, copy and install the pre-built Joystick Interposer build (change `--platform=` to `linux/arm64` for `aarch64`, and change `main` with `latest` and `0.0.0` to the release version for the latest stable release):
 
 ```bash
-docker create --platform="linux/amd64" --name js-interposer ghcr.io/selkies-project/selkies-gstreamer/js-interposer:main-ubuntu${DISTRIB_RELEASE}
+docker create --platform="linux/amd64" --name js-interposer ghcr.io/hellosetsuna/fork-selkies-gstreamer/js-interposer:main-ubuntu${DISTRIB_RELEASE}
 docker cp js-interposer:/opt/selkies-js-interposer_0.0.0.deb /tmp/selkies-js-interposer.deb
 docker rm js-interposer
 sudo apt-get update && sudo apt-get install --no-install-recommends --allow-downgrades -y /tmp/selkies-js-interposer.deb
@@ -174,7 +174,7 @@ rm -f /tmp/selkies-js-interposer.deb
 To retrieve the `.tar.gz` tarball instead of the `.deb` installer:
 
 ```bash
-docker create --platform="linux/amd64" --name js-interposer ghcr.io/selkies-project/selkies-gstreamer/js-interposer:main-ubuntu${DISTRIB_RELEASE}
+docker create --platform="linux/amd64" --name js-interposer ghcr.io/hellosetsuna/fork-selkies-gstreamer/js-interposer:main-ubuntu${DISTRIB_RELEASE}
 docker cp js-interposer:/opt/selkies-js-interposer_0.0.0.tar.gz /tmp/selkies-js-interposer_0.0.0.tar.gz
 docker rm js-interposer
 ```
@@ -219,7 +219,7 @@ The [Example Container](/addons/example) is the reference minimal-functionality 
 Run the Docker®/Podman container built from the [`Example Dockerfile`](/addons/example/Dockerfile), then connect to port **8080** of your Docker®/Podman host to access the web interface (Username: **`ubuntu`**, Password: **`mypasswd`**, **change `DISTRIB_RELEASE` to `24.04`, `22.04`, or `20.04`, and replace `main` to `latest` for the latest stable release**):
 
 ```bash
-docker run --pull=always --name selkies -it -d --rm -e SELKIES_TURN_PROTOCOL=udp -e SELKIES_TURN_PORT=3478 -e TURN_MIN_PORT=65534 -e TURN_MAX_PORT=65535 -p 8080:8080 -p 3478:3478 -p 3478:3478/udp -p 65534-65535:65534-65535 -p 65534-65535:65534-65535/udp ghcr.io/selkies-project/selkies-gstreamer/gst-py-example:main-ubuntu${DISTRIB_RELEASE}
+docker run --pull=always --name selkies -it -d --rm -e SELKIES_TURN_PROTOCOL=udp -e SELKIES_TURN_PORT=3478 -e TURN_MIN_PORT=65534 -e TURN_MAX_PORT=65535 -p 8080:8080 -p 3478:3478 -p 3478:3478/udp -p 65534-65535:65534-65535 -p 65534-65535:65534-65535/udp ghcr.io/hellosetsuna/fork-selkies-gstreamer/gst-py-example:main-ubuntu${DISTRIB_RELEASE}
 ```
 
 Port 3478 and 65534-65535 (change the ports accordingly) are the ports for the internal TURN server needed to route WebRTC through restrictive networks. When deploying multiple containers, these ports must be changed (together with the environment variables `TURN_MIN_PORT`/`TURN_MAX_PORT` with at least two ports in the range plus the environment variable`SELKIES_TURN_PORT`) and cannot be used by any other host process or container.
@@ -245,7 +245,7 @@ The [coTURN Container](/addons/coturn) is a reference container which provides t
 Run the Docker®/Podman container built from the [`coTURN Dockerfile`](/addons/coturn/Dockerfile) (**replace `main` to `latest` for the latest stable release**):
 
 ```bash
-docker run --pull=always --name coturn -it -d --rm -e TURN_SHARED_SECRET=n0TaRealCoTURNAuthSecretThatIsSixtyFourLengthsLongPlaceholdPlace -e TURN_REALM=example.com -e TURN_PORT=3478 -e TURN_MIN_PORT=65500 -e TURN_MAX_PORT=65535 -p 3478:3478 -p 3478:3478/udp -p 65500-65535:65500-65535 -p 65500-65535:65500-65535/udp ghcr.io/selkies-project/selkies-gstreamer/coturn:main
+docker run --pull=always --name coturn -it -d --rm -e TURN_SHARED_SECRET=n0TaRealCoTURNAuthSecretThatIsSixtyFourLengthsLongPlaceholdPlace -e TURN_REALM=example.com -e TURN_PORT=3478 -e TURN_MIN_PORT=65500 -e TURN_MAX_PORT=65535 -p 3478:3478 -p 3478:3478/udp -p 65500-65535:65500-65535 -p 65500-65535:65500-65535/udp ghcr.io/hellosetsuna/fork-selkies-gstreamer/coturn:main
 ```
 
 **The relay ports and the listening port must all be open to the internet.**
@@ -283,7 +283,7 @@ The TURN-REST Container (or similarly, Kubernetes Pod) should be triggered with 
 Run the Docker®/Podman container built from the [`TURN-REST Dockerfile`](/addons/turn-rest/Dockerfile) (replace `main` to `latest` for the latest stable release**):
 
 ```bash
-docker run --pull=always --name turn-rest -it -d --rm -e TURN_SHARED_SECRET=n0TaRealCoTURNAuthSecretThatIsSixtyFourLengthsLongPlaceholdPlace -e TURN_HOST=turn.myinfrastructure.io -e TURN_PORT=3478 -e TURN_PROTOCOL=udp -e TURN_TLS=false -p 8008:8008 ghcr.io/selkies-project/selkies-gstreamer/turn-rest:main
+docker run --pull=always --name turn-rest -it -d --rm -e TURN_SHARED_SECRET=n0TaRealCoTURNAuthSecretThatIsSixtyFourLengthsLongPlaceholdPlace -e TURN_HOST=turn.myinfrastructure.io -e TURN_PORT=3478 -e TURN_PROTOCOL=udp -e TURN_TLS=false -p 8008:8008 ghcr.io/hellosetsuna/fork-selkies-gstreamer/turn-rest:main
 ```
 
 From Selkies-GStreamer, it is sufficient to use the `selkies-gstreamer --turn_rest_uri=` option or `export SELKIES_TURN_REST_URI=` environment variable, pointing to the HTTP(S) URI to the TURN REST API server.

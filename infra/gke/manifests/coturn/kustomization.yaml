@@ -28,9 +28,9 @@ resources:
   - coturn-web-virtualservice.yaml
 
 images:
-  - name: ghcr.io/selkies-project/selkies-gstreamer/coturn
-    newName: ghcr.io/selkies-project/selkies-gstreamer/coturn
+  - name: ghcr.io/hellosetsuna/fork-selkies-gstreamer/coturn
+    newName: ghcr.io/hellosetsuna/fork-selkies-gstreamer/coturn
     newTag: main
-  - name: ghcr.io/selkies-project/selkies-gstreamer/coturn-web
-    newName: ghcr.io/selkies-project/selkies-gstreamer/coturn-web
+  - name: ghcr.io/hellosetsuna/fork-selkies-gstreamer/coturn-web
+    newName: ghcr.io/hellosetsuna/fork-selkies-gstreamer/coturn-web
     newTag: main
