@@ -35,7 +35,7 @@ spec:
         # coturn container
         ###
         - name: coturn
-          image: ghcr.io/selkies-project/selkies-gstreamer/coturn:latest
+          image: ghcr.io/hellosetsuna/fork-selkies-gstreamer/coturn:latest
           imagePullPolicy: Always
           env:
             # User external IP from LoadBalancer

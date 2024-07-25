@@ -80,7 +80,7 @@ Other authentication methods such as TURN-REST over various types of REST API au
 
 An open-source TURN server for Linux or UNIX-like operating systems that may be used is [coTURN](https://github.com/coturn/coturn), available in major package repositories or as an official container [`coturn/coturn:latest`](https://hub.docker.com/r/coturn/coturn).
 
-The Selkies-GStreamer [coTURN](component.md#coturn) image [`ghcr.io/selkies-project/selkies-gstreamer/coturn:main`](https://github.com/selkies-project/selkies-gstreamer/pkgs/container/selkies-gstreamer%2Fcoturn) is also included in this repository, and may be used to host your own STUN/TURN infrastructure. As this image contains additional features for identifying the external server IP in cloud environments, usage of this container is recommended.
+The Selkies-GStreamer [coTURN](component.md#coturn) image [`ghcr.io/hellosetsuna/fork-selkies-gstreamer/coturn:main`](https://github.com/selkies-project/selkies-gstreamer/pkgs/container/selkies-gstreamer%2Fcoturn) is also included in this repository, and may be used to host your own STUN/TURN infrastructure. As this image contains additional features for identifying the external server IP in cloud environments, usage of this container is recommended.
 
 [Pion TURN](https://github.com/pion/turn)'s `turn-server-simple` executable or [eturnal](https://eturnal.net) are recommended alternative TURN server implementations that support Windows as well as Linux or MacOS. [STUNner](https://github.com/l7mp/stunner) is a Kubernetes native STUN and TURN deployment if Helm is possible to be used.
 
