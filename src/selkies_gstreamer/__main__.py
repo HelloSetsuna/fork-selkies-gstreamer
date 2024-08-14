@@ -297,6 +297,11 @@ def set_json_app_argument(config_path, key, value):
 
 def main():
     parser = argparse.ArgumentParser()
+    
+    parser.add_argument('--signalling_server_url',
+                        default=os.environ.get(
+                            'SIGNALLING_SERVER_URL', ''),
+                        help='Path for signalLing server wss/ws url')
     parser.add_argument('--json_config',
                         default=os.environ.get(
                             'SELKIES_JSON_CONFIG', '/tmp/selkies_config.json'),
@@ -507,14 +512,17 @@ def main():
     using_https = args.enable_https.lower() == 'true'
     using_basic_auth = args.enable_basic_auth.lower() == 'true'
     ws_protocol = 'wss:' if using_https else 'ws:'
-    signalling = WebRTCSignalling('%s//127.0.0.1:%s/ws' % (ws_protocol, args.port), my_id, peer_id,
+
+    signalling = WebRTCSignalling(args.signalling_server_url, my_id, peer_id,
+    #signalling = WebRTCSignalling('%s//127.0.0.1:%s/ws' % (ws_protocol, args.port), my_id, peer_id,
         enable_https=using_https,
         enable_basic_auth=using_basic_auth,
         basic_auth_user=args.basic_auth_user,
         basic_auth_password=args.basic_auth_password)
 
     # Initialize signalling client for audio connection
-    audio_signalling = WebRTCSignalling('%s//127.0.0.1:%s/ws' % (ws_protocol, args.port), my_audio_id, audio_peer_id,
+    audio_signalling = WebRTCSignalling(args.signalling_server_url, my_audio_id, audio_peer_id,
+    #audio_signalling = WebRTCSignalling('%s//127.0.0.1:%s/ws' % (ws_protocol, args.port), my_audio_id, audio_peer_id,
         enable_https=using_https,
         enable_basic_auth=using_basic_auth,
         basic_auth_user=args.basic_auth_user,
@@ -861,7 +869,7 @@ def main():
     rtc_file_mon.on_rtc_config = mon_rtc_config
 
     try:
-        asyncio.ensure_future(server.run(), loop=loop)
+        #asyncio.ensure_future(server.run(), loop=loop)
         if using_metrics_http:
             metrics.start_http()
         loop.run_until_complete(webrtc_input.connect())
@@ -905,7 +913,7 @@ def main():
         turn_rest_mon.stop()
         rtc_file_mon.stop()
         system_mon.stop()
-        loop.run_until_complete(server.stop())
+        #loop.run_until_complete(server.stop())
         sys.exit(0)
     # [END main_start]
 
